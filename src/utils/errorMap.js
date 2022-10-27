@@ -5,6 +5,7 @@ const errorMap = {
   'string.min': 400,
   'string.empty': 400,
   'string.email': 400,
+  'any.required': 400,
 };
 
 const mapError = (type) => errorMap[type] || 500;

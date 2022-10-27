@@ -1,4 +1,4 @@
-const { loginSchema, userSchema } = require('./schemas');
+const { loginSchema, userSchema, categorySchema } = require('./schemas');
 
 const validadeLogin = (body) => {
   const { error } = loginSchema.validate(body);
@@ -14,7 +14,15 @@ const validadeUser = (body) => {
   return { type: null, message: '' };
 };
 
+const validadeCategory = (body) => {
+  const { error } = categorySchema.validate(body);
+  if (error) return { type: error.details[0].type, message: error.message };
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validadeLogin,
   validadeUser,
+  validadeCategory,
 };
