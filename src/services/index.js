@@ -3,6 +3,7 @@ const createUser = require('./createUser.service');
 const searchUser = require('./searchUser.service');
 const searchUserById = require('./searchUserById.services');
 const insertCategories = require('./insertCategories.service');
+const findAllCategories = require('./findAllCategories.service');
 
 module.exports = {
   loginPost,
@@ -10,4 +11,5 @@ module.exports = {
   searchUser,
   searchUserById,
   insertCategories,
+  findAllCategories,
 };

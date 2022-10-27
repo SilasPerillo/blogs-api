@@ -3,6 +3,7 @@ const createUser = require('./createUser.controller');
 const searchUser = require('./searchUser.controller');
 const searchUserById = require('./searchUserById.controller');
 const insertCategories = require('./insertCategories.controller');
+const findAllCategories = require('./findAllCategories.controller');
 
 module.exports = {
   loginPost,
@@ -10,4 +11,5 @@ module.exports = {
   searchUser,
   searchUserById,
   insertCategories,
+  findAllCategories,
 };
