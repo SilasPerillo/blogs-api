@@ -1,5 +1,6 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const createToken = require('../utils/createToken');
 const { validadeLogin } = require('./validations/validationsValues');
 
 module.exports = async (body) => {
@@ -18,11 +19,7 @@ module.exports = async (body) => {
   }; 
 }
 
-  const { JWT_SECRET } = process.env;
-
-  const token = jwt.sign({ email }, JWT_SECRET, {
-    expiresIn: '15d',
-  });
+  const token = await createToken({ email });
 
   return { type: null, message: token };
 };
