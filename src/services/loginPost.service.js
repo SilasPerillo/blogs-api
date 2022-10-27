@@ -1,4 +1,3 @@
-// const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const createToken = require('../utils/createToken');
 const { validadeLogin } = require('./validations/validationsValues');
@@ -18,7 +17,6 @@ module.exports = async (body) => {
     type: 'INVALID_FIELDS', message: 'Invalid fields',
   }; 
 }
-
   const token = await createToken({ email });
 
   return { type: null, message: token };
