@@ -11,7 +11,7 @@ module.exports = async (body) => {
   const result = await User.findOne({
     where: { email },
   });
-
+  
   if (!result || password !== result.dataValues.password) {
  return {
     type: 'INVALID_FIELDS', message: 'Invalid fields',

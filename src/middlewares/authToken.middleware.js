@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { User } = require('../models');
 require('dotenv/config');
 
 module.exports = async (req, res, next) => {
@@ -8,8 +9,12 @@ module.exports = async (req, res, next) => {
   if (!token) return res.status(401).json({ message: 'Token not found' });
 
   try {
-    const { data } = jwt.verify(token, JWT_SECRET);
-    req.user = data;
+    const result = jwt.verify(token, JWT_SECRET);
+    const user = await User.findOne({
+      where: { email: result.email },
+      attributes: { exclude: ['password'] },
+    });
+    req.user = user;
 
     return next();
   } catch (_err) {
