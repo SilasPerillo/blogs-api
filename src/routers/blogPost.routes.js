@@ -4,6 +4,6 @@ const middleware = require('../middlewares');
 
 const routes = express.Router();
 
-routes.post('/post', middleware.authToken, controller.createPost);
+routes.post('/post', middleware.authToken, controller.createBlogPost);
 
 module.exports = routes;

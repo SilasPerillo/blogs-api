@@ -1,4 +1,4 @@
-const { loginSchema, userSchema, categorySchema } = require('./schemas');
+const { loginSchema, userSchema, categorySchema, blogPostSchema } = require('./schemas');
 
 const validadeLogin = (body) => {
   const { error } = loginSchema.validate(body);
@@ -21,8 +21,16 @@ const validadeCategory = (body) => {
   return { type: null, message: '' };
 };
 
+const validadeBlogPost = (body) => {
+  const { error } = blogPostSchema.validate(body);
+  if (error) return { type: error.details[0].type, message: 'Some required fields are missing' };
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validadeLogin,
   validadeUser,
   validadeCategory,
+  validadeBlogPost,
 };
